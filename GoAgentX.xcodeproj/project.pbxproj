@@ -1,0 +1,296 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		89B72C5E14E8DF9D0027DC19 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B72C5D14E8DF9D0027DC19 /* Cocoa.framework */; };
+		89B72C6814E8DF9D0027DC19 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89B72C6614E8DF9D0027DC19 /* InfoPlist.strings */; };
+		89B72C6A14E8DF9D0027DC19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B72C6914E8DF9D0027DC19 /* main.m */; };
+		89B72C6E14E8DF9D0027DC19 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 89B72C6C14E8DF9D0027DC19 /* Credits.rtf */; };
+		89B72C7114E8DF9D0027DC19 /* GAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B72C7014E8DF9D0027DC19 /* GAAppDelegate.m */; };
+		89B72C7414E8DF9D0027DC19 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B72C7214E8DF9D0027DC19 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		89B72C5914E8DF9D0027DC19 /* GoAgentX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoAgentX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89B72C5D14E8DF9D0027DC19 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		89B72C6014E8DF9D0027DC19 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		89B72C6114E8DF9D0027DC19 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		89B72C6214E8DF9D0027DC19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		89B72C6514E8DF9D0027DC19 /* GoAgentX-Info.plist */ = {isa = PBXFileReference; path = "GoAgentX-Info.plist"; sourceTree = "<group>"; };
+		89B72C6714E8DF9D0027DC19 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89B72C6914E8DF9D0027DC19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		89B72C6B14E8DF9D0027DC19 /* GoAgentX-Prefix.pch */ = {isa = PBXFileReference; path = "GoAgentX-Prefix.pch"; sourceTree = "<group>"; };
+		89B72C6D14E8DF9D0027DC19 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		89B72C6F14E8DF9D0027DC19 /* GAAppDelegate.h */ = {isa = PBXFileReference; path = GAAppDelegate.h; sourceTree = "<group>"; };
+		89B72C7014E8DF9D0027DC19 /* GAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAAppDelegate.m; sourceTree = "<group>"; };
+		89B72C7314E8DF9D0027DC19 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89B72C5614E8DF9D0027DC19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89B72C5E14E8DF9D0027DC19 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		89B72C4E14E8DF9D0027DC19 = {
+			isa = PBXGroup;
+			children = (
+				89B72C6314E8DF9D0027DC19 /* GoAgentX */,
+				89B72C5C14E8DF9D0027DC19 /* Frameworks */,
+				89B72C5A14E8DF9D0027DC19 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		89B72C5A14E8DF9D0027DC19 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89B72C5914E8DF9D0027DC19 /* GoAgentX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89B72C5C14E8DF9D0027DC19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89B72C5D14E8DF9D0027DC19 /* Cocoa.framework */,
+				89B72C5F14E8DF9D0027DC19 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89B72C5F14E8DF9D0027DC19 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89B72C6014E8DF9D0027DC19 /* AppKit.framework */,
+				89B72C6114E8DF9D0027DC19 /* CoreData.framework */,
+				89B72C6214E8DF9D0027DC19 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		89B72C6314E8DF9D0027DC19 /* GoAgentX */ = {
+			isa = PBXGroup;
+			children = (
+				89B72C6F14E8DF9D0027DC19 /* GAAppDelegate.h */,
+				89B72C7014E8DF9D0027DC19 /* GAAppDelegate.m */,
+				89B72C7214E8DF9D0027DC19 /* MainMenu.xib */,
+				89B72C6414E8DF9D0027DC19 /* Supporting Files */,
+			);
+			path = GoAgentX;
+			sourceTree = "<group>";
+		};
+		89B72C6414E8DF9D0027DC19 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				89B72C6514E8DF9D0027DC19 /* GoAgentX-Info.plist */,
+				89B72C6614E8DF9D0027DC19 /* InfoPlist.strings */,
+				89B72C6914E8DF9D0027DC19 /* main.m */,
+				89B72C6B14E8DF9D0027DC19 /* GoAgentX-Prefix.pch */,
+				89B72C6C14E8DF9D0027DC19 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89B72C5814E8DF9D0027DC19 /* GoAgentX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89B72C7714E8DF9D0027DC19 /* Build configuration list for PBXNativeTarget "GoAgentX" */;
+			buildPhases = (
+				89B72C5514E8DF9D0027DC19 /* Sources */,
+				89B72C5614E8DF9D0027DC19 /* Frameworks */,
+				89B72C5714E8DF9D0027DC19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoAgentX;
+			productName = GoAgentX;
+			productReference = 89B72C5914E8DF9D0027DC19 /* GoAgentX.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89B72C5014E8DF9D0027DC19 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = xujiwei.com;
+			};
+			buildConfigurationList = 89B72C5314E8DF9D0027DC19 /* Build configuration list for PBXProject "GoAgentX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 89B72C4E14E8DF9D0027DC19;
+			productRefGroup = 89B72C5A14E8DF9D0027DC19 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89B72C5814E8DF9D0027DC19 /* GoAgentX */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89B72C5714E8DF9D0027DC19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89B72C6814E8DF9D0027DC19 /* InfoPlist.strings in Resources */,
+				89B72C6E14E8DF9D0027DC19 /* Credits.rtf in Resources */,
+				89B72C7414E8DF9D0027DC19 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89B72C5514E8DF9D0027DC19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89B72C6A14E8DF9D0027DC19 /* main.m in Sources */,
+				89B72C7114E8DF9D0027DC19 /* GAAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		89B72C6614E8DF9D0027DC19 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89B72C6714E8DF9D0027DC19 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		89B72C6C14E8DF9D0027DC19 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89B72C6D14E8DF9D0027DC19 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		89B72C7214E8DF9D0027DC19 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89B72C7314E8DF9D0027DC19 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89B72C7514E8DF9D0027DC19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		89B72C7614E8DF9D0027DC19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		89B72C7814E8DF9D0027DC19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoAgentX/GoAgentX-Prefix.pch";
+				INFOPLIST_FILE = "GoAgentX/GoAgentX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		89B72C7914E8DF9D0027DC19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoAgentX/GoAgentX-Prefix.pch";
+				INFOPLIST_FILE = "GoAgentX/GoAgentX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89B72C5314E8DF9D0027DC19 /* Build configuration list for PBXProject "GoAgentX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89B72C7514E8DF9D0027DC19 /* Debug */,
+				89B72C7614E8DF9D0027DC19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89B72C7714E8DF9D0027DC19 /* Build configuration list for PBXNativeTarget "GoAgentX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89B72C7814E8DF9D0027DC19 /* Debug */,
+				89B72C7914E8DF9D0027DC19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89B72C5014E8DF9D0027DC19 /* Project object */;
+}
