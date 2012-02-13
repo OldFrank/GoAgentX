@@ -13,6 +13,7 @@
 		89B72C6E14E8DF9D0027DC19 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 89B72C6C14E8DF9D0027DC19 /* Credits.rtf */; };
 		89B72C7114E8DF9D0027DC19 /* GAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B72C7014E8DF9D0027DC19 /* GAAppDelegate.m */; };
 		89B72C7414E8DF9D0027DC19 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89B72C7214E8DF9D0027DC19 /* MainMenu.xib */; };
+		89B72C7C14E8EC580027DC19 /* goagent in Resources */ = {isa = PBXBuildFile; fileRef = 89B72C7B14E8EC580027DC19 /* goagent */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		89B72C6F14E8DF9D0027DC19 /* GAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAAppDelegate.h; sourceTree = "<group>"; };
 		89B72C7014E8DF9D0027DC19 /* GAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAAppDelegate.m; sourceTree = "<group>"; };
 		89B72C7314E8DF9D0027DC19 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		89B72C7B14E8EC580027DC19 /* goagent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = goagent; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		89B72C7A14E8E1470027DC19 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				89B72C7B14E8EC580027DC19 /* goagent */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				89B72C6814E8DF9D0027DC19 /* InfoPlist.strings in Resources */,
 				89B72C6E14E8DF9D0027DC19 /* Credits.rtf in Resources */,
 				89B72C7414E8DF9D0027DC19 /* MainMenu.xib in Resources */,
+				89B72C7C14E8EC580027DC19 /* goagent in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
