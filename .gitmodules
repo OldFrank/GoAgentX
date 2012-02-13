@@ -1,3 +1,3 @@
 [submodule "Resources/goagent"]
 	path = Resources/goagent
-	url = http://repo.or.cz/w/goagent.git
+	url = https://github.com/phus/goagent.git
