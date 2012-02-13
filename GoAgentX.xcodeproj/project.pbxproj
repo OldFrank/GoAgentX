@@ -21,12 +21,12 @@
 		89B72C6014E8DF9D0027DC19 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		89B72C6114E8DF9D0027DC19 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		89B72C6214E8DF9D0027DC19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		89B72C6514E8DF9D0027DC19 /* GoAgentX-Info.plist */ = {isa = PBXFileReference; path = "GoAgentX-Info.plist"; sourceTree = "<group>"; };
+		89B72C6514E8DF9D0027DC19 /* GoAgentX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoAgentX-Info.plist"; sourceTree = "<group>"; };
 		89B72C6714E8DF9D0027DC19 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89B72C6914E8DF9D0027DC19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		89B72C6B14E8DF9D0027DC19 /* GoAgentX-Prefix.pch */ = {isa = PBXFileReference; path = "GoAgentX-Prefix.pch"; sourceTree = "<group>"; };
+		89B72C6B14E8DF9D0027DC19 /* GoAgentX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoAgentX-Prefix.pch"; sourceTree = "<group>"; };
 		89B72C6D14E8DF9D0027DC19 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		89B72C6F14E8DF9D0027DC19 /* GAAppDelegate.h */ = {isa = PBXFileReference; path = GAAppDelegate.h; sourceTree = "<group>"; };
+		89B72C6F14E8DF9D0027DC19 /* GAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAAppDelegate.h; sourceTree = "<group>"; };
 		89B72C7014E8DF9D0027DC19 /* GAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAAppDelegate.m; sourceTree = "<group>"; };
 		89B72C7314E8DF9D0027DC19 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +46,7 @@
 		89B72C4E14E8DF9D0027DC19 = {
 			isa = PBXGroup;
 			children = (
+				89B72C7A14E8E1470027DC19 /* Resources */,
 				89B72C6314E8DF9D0027DC19 /* GoAgentX */,
 				89B72C5C14E8DF9D0027DC19 /* Frameworks */,
 				89B72C5A14E8DF9D0027DC19 /* Products */,
@@ -100,6 +101,13 @@
 				89B72C6C14E8DF9D0027DC19 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89B72C7A14E8E1470027DC19 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
