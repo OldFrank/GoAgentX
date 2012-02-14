@@ -156,6 +156,7 @@
             outputTextView:statusLogTextView 
         terminationHandler:^(NSTask *theTask) {
             [self setStatusToRunning:NO];
+            [statusLogTextView appendString:@"服务已停止\n"];
         }];
         
         [statusLogTextView appendString:@"启动完成\n"];

@@ -8,6 +8,8 @@
 
 #import "GACommandRunner.h"
 
+#define GACommandRunnerTaskTerminatedNotification @"GACommandRunnerTaskTerminatedNotification"
+
 @implementation GACommandRunner
 
 - (id)init {
@@ -35,14 +37,18 @@
 }
 
 
+- (void)waitTaskUntilDone:(id)sender {
+    [task waitUntilExit];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GACommandRunnerTaskTerminatedNotification object:sender];
+}
+
+
 - (void)runCommand:(NSString *)path
   currentDirectory:(NSString *)curDir
          arguments:(NSArray *)arguments
          inputText:(NSString *)inputText
     outputTextView:(GAAutoscrollTextView *)textView
 terminationHandler:(void (^)(NSTask *))terminationHandler {
-
-    //[[textView textStorage] setAttributedString:[[NSAttributedString alloc] initWithString:@""]];
     
     [self terminateTask];
     
@@ -80,15 +86,21 @@ terminationHandler:(void (^)(NSTask *))terminationHandler {
     
     __block id _self = self;
     
-    [task setTerminationHandler:^(NSTask *theTask) {
-        [outputReadHandle closeFile];
-        [[NSNotificationCenter defaultCenter] removeObserver:_self];
-        [textView appendString:@"\n"];
-        
-        terminationHandler(theTask);
-    }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:GACommandRunnerTaskTerminatedNotification
+                                                      object:self
+                                                       queue:[NSOperationQueue new]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      [outputReadHandle closeFile];
+                                                      [[NSNotificationCenter defaultCenter] removeObserver:_self];
+                                                      [textView appendString:@"\n"];
+                                                      
+                                                      terminationHandler(task);
+                                                  }];
     
     [task launch];
+    
+    // 新启线程来等待进程结束
+    [NSThread detachNewThreadSelector:@selector(waitTaskUntilDone:) toTarget:self withObject:self];
 }
 
 
