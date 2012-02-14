@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GoAgent:Local:Port</key>
+	<string>8087</string>
+	<key>GoAgent:Local:AppId</key>
+	<string></string>
+	<key>GoAgent:Local:ServicePassword</key>
+	<string></string>
+	<key>GoAgent:Local:GAEProfile</key>
+	<string>google_cn</string>
+	<key>GoAgent:Local:ConnectMode</key>
+	<string>HTTP</string>
+	<key>GoAgent:Local:ProxyEnabled</key>
+	<false/>
+	<key>GoAgent:Local:ProxyHost</key>
+	<string></string>
+	<key>GoAgent:Local:ProxyPort</key>
+	<string>8080</string>
+	<key>GoAgent:Local:ProxyUsername</key>
+	<string></string>
+	<key>GoAgent:Local:ProxyPassword</key>
+	<string></string>
+</dict>
+</plist>
