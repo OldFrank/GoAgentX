@@ -11,7 +11,7 @@
 @implementation GAAutoscrollTextView
 
 - (void)clear {
-    [[self textStorage] setAttributedString:[[NSAttributedString alloc] initWithString:@""]];
+    [self setString:@""];
 }
 
 
