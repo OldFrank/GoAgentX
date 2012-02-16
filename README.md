@@ -32,6 +32,10 @@ GoAgentX 是一个 goagent 在 Mac OS X 下的图形界面控制软件，方便�
 
 中添加 GoAgentX 到自动启动程序列表。
 
+## 程序截图
+
+![程序截图](https://github.com/ohdarling/GoAgentX/raw/master/Screenshot.png)
+
 ## 如何编译
 
 获取代码：
