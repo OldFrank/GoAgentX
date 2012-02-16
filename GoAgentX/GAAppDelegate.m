@@ -25,11 +25,11 @@
 
 
 - (NSString *)copyFolderToApplicationSupport:(NSString *)folder {
-    NSString *serverPath = [[NSBundle mainBundle] pathForResource:folder ofType:nil inDirectory:@"goagent"];
+    NSString *srcPath = [[self pathInApplicationSupportFolder:@"goagent"] stringByAppendingPathComponent:folder];
     NSString *copyPath = [self pathInApplicationSupportFolder:folder];
     [[NSFileManager defaultManager] removeItemAtPath:copyPath error:NULL];
     [[NSFileManager defaultManager] createDirectoryAtPath:[copyPath stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:NULL];
-    [[NSFileManager defaultManager] copyItemAtPath:serverPath toPath:copyPath error:NULL];
+    [[NSFileManager defaultManager] copyItemAtPath:srcPath toPath:copyPath error:NULL];
     return copyPath;
 }
 
@@ -85,20 +85,23 @@
 
 
 - (BOOL)checkIfGoAgentInstalled {
-    NSString *proxypyPath = [[self pathInApplicationSupportFolder:@"local"] stringByAppendingPathComponent:@"proxy.py"];
-    NSString *fetchpyPath = [[[self pathInApplicationSupportFolder:@"server"] stringByAppendingPathComponent:@"python"] stringByAppendingPathComponent:@"fetch.py"];
+    NSString *goagentPath = [self pathInApplicationSupportFolder:@"goagent"];
+    NSString *proxypyPath  = [[goagentPath stringByAppendingPathComponent:@"local"] stringByAppendingPathComponent:@"proxy.py"];
+    NSString *fetchpyPath = [[[goagentPath stringByAppendingPathComponent:@"server"] stringByAppendingPathComponent:@"python"] stringByAppendingPathComponent:@"fetch.py"];
     return [[NSFileManager defaultManager] fileExistsAtPath:proxypyPath] && [[NSFileManager defaultManager] fileExistsAtPath:fetchpyPath];
 }
 
 
 - (void)installFromFolder:(NSString *)path {
-    NSString *localPath = [self pathInApplicationSupportFolder:@"local"];
-    [[NSFileManager defaultManager] removeItemAtPath:localPath error:NULL];
-    [[NSFileManager defaultManager] copyItemAtPath:[path stringByAppendingPathComponent:@"local"] toPath:localPath error:NULL];
+    NSString *goagentPath = [self pathInApplicationSupportFolder:@"goagent"];
+    [[NSFileManager defaultManager] removeItemAtPath:goagentPath error:NULL];
+    [[NSFileManager defaultManager] createDirectoryAtPath:goagentPath withIntermediateDirectories:YES attributes:nil error:NULL];
     
-    NSString *serverPath = [self pathInApplicationSupportFolder:@"server"];
-    [[NSFileManager defaultManager] removeItemAtPath:serverPath error:NULL];
-    [[NSFileManager defaultManager] copyItemAtPath:[path stringByAppendingPathComponent:@"server"] toPath:serverPath error:NULL];
+    [[NSFileManager defaultManager] copyItemAtPath:[path stringByAppendingPathComponent:@"local"]
+                                            toPath:[goagentPath stringByAppendingPathComponent:@"local"] error:NULL];
+    
+    [[NSFileManager defaultManager] copyItemAtPath:[path stringByAppendingPathComponent:@"server"]
+                                            toPath:[goagentPath stringByAppendingPathComponent:@"server"] error:NULL];
 }
 
 
