@@ -53,6 +53,7 @@
 - (IBAction)clearStatusLog:(id)sender;
 
 - (IBAction)saveClientSettings:(id)sender;
+- (IBAction)showInstallPanel:(id)sender;
 
 - (IBAction)clearDeployLog:(id)sender;
 - (IBAction)deployButtonClicked:(id)sender;

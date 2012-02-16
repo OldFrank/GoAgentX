@@ -14,19 +14,6 @@
 @synthesize window = _window;
 
 #pragma mark -
-#pragma mark Setup
-
-- (void)setupStatusItem {
-    statusBarItem = [[NSStatusBar systemStatusBar] statusItemWithLength:23.0];
-    statusBarItem.image = [NSImage imageNamed:@"status_item_icon"];
-    statusBarItem.alternateImage = [NSImage imageNamed:@"status_item_icon_alt"];
-    statusBarItem.menu = statusBarItemMenu;
-    statusBarItem.toolTip = @"GoAgent is NOT Running";
-    [statusBarItem setHighlightMode:YES];
-}
-
-
-#pragma mark -
 #pragma mark Helper
 
 - (NSString *)pathInApplicationSupportFolder:(NSString *)path {
@@ -81,6 +68,82 @@
     statusMenuItem.title = statusText;
     statusMenuItem.image = statusImage;
     statusToggleButton.title = buttonTitle;
+}
+
+
+#pragma mark -
+#pragma mark Setup
+
+- (void)setupStatusItem {
+    statusBarItem = [[NSStatusBar systemStatusBar] statusItemWithLength:23.0];
+    statusBarItem.image = [NSImage imageNamed:@"status_item_icon"];
+    statusBarItem.alternateImage = [NSImage imageNamed:@"status_item_icon_alt"];
+    statusBarItem.menu = statusBarItemMenu;
+    statusBarItem.toolTip = @"GoAgent is NOT Running";
+    [statusBarItem setHighlightMode:YES];
+}
+
+
+- (BOOL)checkIfGoAgentInstalled {
+    NSString *proxypyPath = [[self pathInApplicationSupportFolder:@"local"] stringByAppendingPathComponent:@"proxy.py"];
+    NSString *fetchpyPath = [[[self pathInApplicationSupportFolder:@"server"] stringByAppendingPathComponent:@"python"] stringByAppendingPathComponent:@"fetch.py"];
+    return [[NSFileManager defaultManager] fileExistsAtPath:proxypyPath] && [[NSFileManager defaultManager] fileExistsAtPath:fetchpyPath];
+}
+
+
+- (void)installFromFolder:(NSString *)path {
+    NSString *localPath = [self pathInApplicationSupportFolder:@"local"];
+    [[NSFileManager defaultManager] removeItemAtPath:localPath error:NULL];
+    [[NSFileManager defaultManager] copyItemAtPath:[path stringByAppendingPathComponent:@"local"] toPath:localPath error:NULL];
+    
+    NSString *serverPath = [self pathInApplicationSupportFolder:@"server"];
+    [[NSFileManager defaultManager] removeItemAtPath:serverPath error:NULL];
+    [[NSFileManager defaultManager] copyItemAtPath:[path stringByAppendingPathComponent:@"server"] toPath:serverPath error:NULL];
+}
+
+
+- (void)showInstallPanel:(id)sender {
+    NSAlert *alert = [NSAlert alertWithMessageText:@"尚未安装 goagent"
+                                     defaultButton:@"前往下载页面"
+                                   alternateButton:@"我已经下载了最新的 goagent"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"如果您尚未下载过 goagent，请点击“前往下载页面”。下载后将压缩包解压，"
+                      "目录中将会有 local 和 server 两个目录，在下一步的选择框中请选择包含 local 和 server 的目录"];
+    
+    if ([alert runModal] == NSAlertDefaultReturn) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://code.google.com/p/goagent/"]];
+    }
+    
+    NSOpenPanel *op = [NSOpenPanel openPanel];
+    op.title = @"请选择包含 goagent 所在的目录，这个目录包含 local 和 server 两个目录";
+    op.prompt = @"选择";
+    op.canChooseFiles = NO;
+    op.canChooseDirectories = YES;
+    if ([op runModal] == NSFileHandlingPanelOKButton) {
+        [self installFromFolder:[[op URL] path]];
+        
+        if ([self checkIfGoAgentInstalled]) {
+            [[NSAlert alertWithMessageText:@"安装 goagent 成功"
+                             defaultButton:@"确定"
+                           alternateButton:nil
+                               otherButton:nil
+                 informativeTextWithFormat:@"如果您还未部署过 App Engine 服务端，请先进入服务端部署标签页进行部署，再到客户端设置页进行设置，最后到状态标签页启动连接。"] runModal];
+            
+        } else {
+            [[NSAlert alertWithMessageText:@"安装 goagent 失败"
+                             defaultButton:@"确定"
+                           alternateButton:nil
+                               otherButton:nil
+                 informativeTextWithFormat:@"您选择的目录没有包含 local 或 server 目录，或者不是正确的 goagent 解压目录，请在客户端配置标签中尝试重新安装。"] runModal];
+        }
+        
+    } else {
+        [[NSAlert alertWithMessageText:@"尚未安装 goagent"
+                         defaultButton:@"确定"
+                       alternateButton:nil
+                           otherButton:nil
+             informativeTextWithFormat:@"不安装 goagent 您将无法使用 goagent 的功能，您可以在客户端配置标签页重新进行安装 goagent"] runModal];
+    }
 }
 
 
@@ -350,11 +413,16 @@
     [self restoreClientSettings];
     [self setupStatusItem];
     
+    if (![self checkIfGoAgentInstalled]) {
+        [self showInstallPanel:nil];
+    }
+    
+    // 如果已经配置过 appid，则直接尝试连接，否则显示主窗口
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"GoAgent:Local:AppId"] length] > 0) {
         [self toggleServiceStatus:nil];
     } else {
         [self showMainWindow:nil];
-    }
+    }    
 }
 
 
