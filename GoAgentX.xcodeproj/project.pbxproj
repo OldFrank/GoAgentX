@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8963E34014ED4A01008587B7 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8963E33E14ED4A01008587B7 /* LaunchAtLoginController.m */; };
+		8963E34114ED4A01008587B7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8963E33F14ED4A01008587B7 /* README.md */; };
 		89B72C5E14E8DF9D0027DC19 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B72C5D14E8DF9D0027DC19 /* Cocoa.framework */; };
 		89B72C6814E8DF9D0027DC19 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89B72C6614E8DF9D0027DC19 /* InfoPlist.strings */; };
 		89B72C6A14E8DF9D0027DC19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B72C6914E8DF9D0027DC19 /* main.m */; };
@@ -25,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8963E33D14ED4A01008587B7 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		8963E33E14ED4A01008587B7 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		8963E33F14ED4A01008587B7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		89B72C5914E8DF9D0027DC19 /* GoAgentX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoAgentX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B72C5D14E8DF9D0027DC19 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		89B72C6014E8DF9D0027DC19 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -63,9 +68,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8963E33B14ED4A01008587B7 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				8963E33C14ED4A01008587B7 /* LaunchAtLoginController */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		8963E33C14ED4A01008587B7 /* LaunchAtLoginController */ = {
+			isa = PBXGroup;
+			children = (
+				8963E33D14ED4A01008587B7 /* LaunchAtLoginController.h */,
+				8963E33E14ED4A01008587B7 /* LaunchAtLoginController.m */,
+				8963E33F14ED4A01008587B7 /* README.md */,
+			);
+			path = LaunchAtLoginController;
+			sourceTree = "<group>";
+		};
 		89B72C4E14E8DF9D0027DC19 = {
 			isa = PBXGroup;
 			children = (
+				8963E33B14ED4A01008587B7 /* Libraries */,
 				89B72C7A14E8E1470027DC19 /* Resources */,
 				89B72C6314E8DF9D0027DC19 /* GoAgentX */,
 				89B72C5C14E8DF9D0027DC19 /* Frameworks */,
@@ -202,6 +226,7 @@
 				89B72CED14E926730027DC19 /* status_stopped.png in Resources */,
 				89B72D4614E956340027DC19 /* GoAgentDefaultSettings.plist in Resources */,
 				89B72D4A14E960BE0027DC19 /* proxyinitemplate in Resources */,
+				8963E34114ED4A01008587B7 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +241,7 @@
 				89B72C7114E8DF9D0027DC19 /* GAAppDelegate.m in Sources */,
 				89B72CF114E931CE0027DC19 /* GAAutoscrollTextView.m in Sources */,
 				89B72CF414E934CF0027DC19 /* GACommandRunner.m in Sources */,
+				8963E34014ED4A01008587B7 /* LaunchAtLoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

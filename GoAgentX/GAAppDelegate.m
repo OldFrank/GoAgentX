@@ -412,6 +412,9 @@
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    // 设置状态日志最大为10K
+    statusLogTextView.maxLength = 10000;
+    
     [[NSUserDefaults standardUserDefaults] registerDefaults:[self defaultSettings]];
     [self restoreClientSettings];
     [self setupStatusItem];

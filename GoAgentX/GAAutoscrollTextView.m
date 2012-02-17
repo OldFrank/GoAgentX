@@ -10,6 +10,8 @@
 
 @implementation GAAutoscrollTextView
 
+@synthesize maxLength;
+
 - (void)clear {
     [self setString:@""];
 }
@@ -23,6 +25,10 @@
 
 
 - (void)appendAttributedString:(NSAttributedString *)str {
+    if (maxLength > 0 && self.string.length > maxLength) {
+        [self clear];
+    }
+    
     [[self textStorage] appendAttributedString:str];
     [self scrollToEndOfDocument:nil];
 }
