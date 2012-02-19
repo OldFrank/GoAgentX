@@ -52,7 +52,7 @@
 - (IBAction)toggleServiceStatus:(id)sender;
 - (IBAction)clearStatusLog:(id)sender;
 
-- (IBAction)saveClientSettings:(id)sender;
+- (IBAction)applyClientSettings:(id)sender;
 - (IBAction)showInstallPanel:(id)sender;
 
 - (IBAction)clearDeployLog:(id)sender;
