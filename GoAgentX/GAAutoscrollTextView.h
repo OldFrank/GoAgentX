@@ -14,4 +14,6 @@
 - (void)appendString:(NSString *)str;
 - (void)appendAttributedString:(NSAttributedString *)str;
 
+@property (nonatomic, assign)   NSUInteger  maxLength;
+
 @end

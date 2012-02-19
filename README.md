@@ -20,6 +20,7 @@ GoAgentX 是一个 goagent 在 Mac OS X 下的图形界面控制软件，方便�
 
 1. 申请 Google App Engine 并创建 appid
 1. 前往 <http://code.google.com/p/goagent/> goagent v1.7.10 
+1. 下载 GoAgentX <https://github.com/ohdarling/GoAgentX/downloads>
 1. 运行 GoAgentX，根据提示安装 goagent
 1. 进入 GoAgentX 服务端部署标签，填写相关信息后，点部署来部署 goagent 到 App Engine
 1. 进入 GoAgentX 客户端设置标签，填写之前申请的 App Engine appid 以及服务密码，并根据实际情况选择连接方式和服务器

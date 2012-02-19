@@ -70,6 +70,15 @@
     statusToggleButton.title = buttonTitle;
 }
 
+- (NSArray *)connectionModes {
+    return [NSArray arrayWithObjects:@"HTTP", @"HTTPS", nil];
+}
+
+
+- (NSArray *)gaeProfiles {
+    return [NSArray arrayWithObjects:@"google_cn", @"google_hk", @"google_ipv6", nil];;
+}
+
 
 #pragma mark -
 #pragma mark Setup
@@ -205,8 +214,14 @@
         NSString *proxyini = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"proxyinitemplate" ofType:nil] 
                                                        encoding:NSUTF8StringEncoding error:NULL];
         for (NSString *key in [defaults allKeys]) {
+            NSString *value = [userDefaults stringForKey:key] ?: @"";
+            if ([key isEqualToString:@"GoAgent:Local:GAEProfile"]) {
+                value = [[self gaeProfiles] objectAtIndex:[value intValue]];
+            } else if ([key isEqualToString:@"GoAgent:Local:ConnectMode"]) {
+                value = [[self connectionModes] objectAtIndex:[value intValue]];
+            }
             proxyini = [proxyini stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"{%@}", key]
-                                                           withString:[userDefaults stringForKey:key] ?: @""];
+                                                           withString:value];
         }
         [proxyini writeToFile:[copyPath stringByAppendingPathComponent:@"proxy.ini"] atomically:YES encoding:NSUTF8StringEncoding error:NULL];
         
@@ -242,84 +257,10 @@
 #pragma mark -
 #pragma mark 客户端设置
 
-- (NSDictionary *)settingsControlMap {
-    NSDictionary *map = [NSDictionary dictionaryWithObjectsAndKeys:
-                         clientPortField,           @"GoAgent:Local:Port",
-                         clientAppIdField,          @"GoAgent:Local:AppId",
-                         clientServicePasswordField,@"GoAgent:Local:ServicePassword",
-                         clientConnectModeSegment,  @"GoAgent:Local:ConnectMode",
-                         clientServerSegment,       @"GoAgent:Local:GAEProfile",
-                         clientUseProxyButton,      @"GoAgent:Local:ProxyEnabled",
-                         clientProxyServerField,    @"GoAgent:Local:ProxyServer",
-                         clientProxyUsernameField,  @"GoAgent:Local:ProxyUsername",
-                         clientProxyPasswordField,  @"GoAgent:Local:ProxyPassword",
-                         nil];
-    NSArray *modes = [NSArray arrayWithObjects:@"HTTP", @"HTTPS", nil];
-    NSArray *servers = [NSArray arrayWithObjects:@"google_cn", @"google_hk", @"google_ipv6", nil];
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-            map,    @"controls",
-            modes,  @"connectModes",
-            servers,@"servers",
-            nil];
-}
-
-
-- (void)restoreClientSettings {
-    NSDictionary *map = [self settingsControlMap];
-    NSDictionary *controls = [map objectForKey:@"controls"];
-    NSArray *modes = [map objectForKey:@"connectModes"];
-    NSArray *servers = [map objectForKey:@"servers"];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    for (NSString *key in [controls allKeys]) {
-        NSTextField *textfield = [controls objectForKey:key];
-        NSString *val = [defaults stringForKey:key];
-        if ([textfield isKindOfClass:[NSTextField class]]) {
-            textfield.stringValue = val ?: @"";
-            
-        } else if ((id)textfield == (id)clientConnectModeSegment) {
-            clientConnectModeSegment.selectedSegment = [modes indexOfObject:val];
-            
-        } else if ((id)textfield == (id)clientServerSegment) {
-            clientServerSegment.selectedSegment = [servers indexOfObject:val];
-            
-        } else if ((id)textfield == (id)clientUseProxyButton) {
-            clientUseProxyButton.state = [val boolValue] ? NSOnState : NSOffState;
-        }
-    }
-}
-
-
-- (void)saveClientSettings:(id)sender {
-    NSDictionary *map = [self settingsControlMap];
-    NSDictionary *controls = [map objectForKey:@"controls"];
-    NSArray *modes = [map objectForKey:@"connectModes"];
-    NSArray *servers = [map objectForKey:@"servers"];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    for (NSString *key in [controls allKeys]) {
-        NSTextField *textfield = [controls objectForKey:key];
-        if ([textfield isKindOfClass:[NSTextField class]]) {
-            [defaults setObject:textfield.stringValue ?: @"" forKey:key];
-            
-        } else if ((id)textfield == (id)clientConnectModeSegment) {
-            [defaults setObject:[modes objectAtIndex:clientConnectModeSegment.selectedSegment] forKey:key];
-            
-        } else if ((id)textfield == (id)clientServerSegment) {
-            [defaults setObject:[servers objectAtIndex:clientServerSegment.selectedSegment] forKey:key];
-            
-        } else if ((id)textfield == (id)clientUseProxyButton) {
-            [defaults setBool:clientUseProxyButton.state == NSOnState ? YES : NO forKey:key];
-        }
-    }
-    
-    [defaults synchronize];
-    
-    [[NSAlert alertWithMessageText:@"客户端设置" 
-                     defaultButton:nil 
-                   alternateButton:nil
-                       otherButton:nil
-         informativeTextWithFormat:@"保存成功，您需要停止并重新启动连接才能使用修改后的配置"] runModal];
+- (void)applyClientSettings:(id)sender {
+    [proxyRunner terminateTask];
+    sleep(1);
+    [self toggleServiceStatus:nil];
 }
 
 
@@ -412,10 +353,16 @@
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    // 设置状态日志最大为10K
+    statusLogTextView.maxLength = 10000;
+    
+    // 注册默认偏好设置
     [[NSUserDefaults standardUserDefaults] registerDefaults:[self defaultSettings]];
-    [self restoreClientSettings];
+    
+    // 设置 MenuBar 图标
     [self setupStatusItem];
     
+    // 如果没有安装 goagent 就提示安装
     if (![self checkIfGoAgentInstalled]) {
         [self showInstallPanel:nil];
     }

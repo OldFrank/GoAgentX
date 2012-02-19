@@ -10,8 +10,15 @@
 
 @implementation GAAutoscrollTextView
 
+@synthesize maxLength;
+
 - (void)clear {
-    [self setString:@""];
+    if (![NSThread isMainThread]) {
+        [self performSelectorOnMainThread:@selector(clear) withObject:nil waitUntilDone:NO];
+        return;
+    }
+    
+    [[self textStorage] setAttributedString:[[NSAttributedString alloc] initWithString:@""]];
 }
 
 
@@ -23,6 +30,15 @@
 
 
 - (void)appendAttributedString:(NSAttributedString *)str {
+    if (![NSThread isMainThread]) {
+        [self performSelectorOnMainThread:@selector(appendAttributedString:) withObject:str waitUntilDone:NO];
+        return;
+    }
+    
+    if (maxLength > 0 && self.string.length > maxLength) {
+        [self clear];
+    }
+    
     [[self textStorage] appendAttributedString:str];
     [self scrollToEndOfDocument:nil];
 }
